@@ -8,4 +8,6 @@
   <mac address='52:54:00:97:F9:FD'/>
   <ip address='192.168.0.254' netmask='255.255.255.0'>
   </ip>
+  <ip family='ipv6' address='fec0::254' prefix='64'>
+  </ip>
 </network>

@@ -519,7 +519,7 @@ static void set_options(char *logfile)
 	/* the Linux kernel does currently not support UDP encaspulation for IPv6
 	 * so lets disable IPv6 for now to avoid issues with dual-stack gateways */
 	lib->settings->set_bool(lib->settings,
-					"charon.plugins.socket-default.use_ipv6", FALSE);
+					"charon.plugins.socket-default.use_ipv6", TRUE);
 
 #ifdef USE_BYOD
 	lib->settings->set_str(lib->settings,
@@ -545,6 +545,7 @@ static void charonservice_init(JNIEnv *env, jobject service, jobject builder,
 			PLUGIN_PROVIDE(CUSTOM, "kernel-ipsec"),
 		PLUGIN_CALLBACK(kernel_net_register, kernel_android_net_create),
 			PLUGIN_PROVIDE(CUSTOM, "kernel-net"),
+				PLUGIN_DEPENDS(CUSTOM, "socket"),
 		PLUGIN_CALLBACK(charonservice_register, NULL),
 			PLUGIN_PROVIDE(CUSTOM, "android-backend"),
 				PLUGIN_DEPENDS(CUSTOM, "libcharon"),

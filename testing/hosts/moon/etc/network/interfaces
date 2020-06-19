@@ -9,6 +9,7 @@ iface eth0 inet static
 	gateway 192.168.0.254
 iface eth0 inet6 static
 	address fec0::1
+	gateway fec0::254
 	netmask 16
 
 auto eth1
